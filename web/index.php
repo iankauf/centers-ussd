@@ -10,7 +10,8 @@ if ($text == "") {
     // This is the first request. Note how we start the response with CON
     $response  = "CON What Region Are You In \n";
     $response .= "1. Central Region \n";
-    $response .= "2. Southern Region ";
+    $response .= "2. Southern Region \n";
+    $response .= "3. Northern Region \n";
 
 
 } else if ($text == "1") {
@@ -27,7 +28,14 @@ if ($text == "") {
     $response .= "2. Mwaiwathu Health Center \n";
     $response .= "3. SDA Health Center \n";
     
-} else if($text == "1*1") { 
+} elseif ($text == "3") {
+    //logic for the 1st level response
+    $response = "CON Choose Health Center  \n";
+    $response .= "1. Mzuzu District Hospital \n";
+    $response .= "2. Mzimba District Hospital \n";
+    $response .= "3. Rumphi Health Center \n";
+
+}else if($text == "1*1") { 
     // This is a second level response where the user selected 1 in the first instance
     
 
@@ -55,7 +63,22 @@ if ($text == "") {
 
     $response = "END The vaccines available are:\n Astrazaneca \n Johnson and Johnson";
 
-} 
+} else if($text == "3*1") { 
+    // This is a 3rd level response where the user selected 3 in the first instance
+    
+
+    // This is a terminal request. Note how we start the response with END
+    $response = "END The vaccines available are: Pfizer \n Astrazaneca \n Johnson and Johnson";
+
+} else if($text == "3*2"){
+
+    $response = "END The vaccines available are:\n Astrazaneca \n Johnson and Johnson";
+    
+} else if($text == "3*3"){
+
+    $response = "END The vaccines available are:\n Astrazaneca \n Johnson and Johnson";
+    
+}
 
 // Echo the response back to the API
 header('Content-type: text/plain');
